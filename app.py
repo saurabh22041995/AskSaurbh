@@ -47,7 +47,7 @@ def create_vector_embedding():
         st.write("Vector Database already exists!")
 
 user_prompt = st.text_input("Enter your query for saurabh CV")
-if st.button("Document Embedding"):
+if st.button("Ask"):
     with st.spinner('Wait for it...'):
         create_vector_embedding()
 
