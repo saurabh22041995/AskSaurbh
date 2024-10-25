@@ -8,3 +8,4 @@ langchain_huggingface
 langchain_text_splitters
 faiss-cpu
 pypdf
+python-dotenv

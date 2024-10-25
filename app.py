@@ -1,6 +1,7 @@
 import os
 
 import streamlit as st
+from dotenv import load_dotenv
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_community.document_loaders import PyPDFDirectoryLoader
@@ -10,7 +11,9 @@ from langchain_groq import ChatGroq
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-groq_api_key = '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'
+load_dotenv()
+
+groq_api_key = os.getenv('GROQ_API_KEY')
 llm = ChatGroq(groq_api_key=groq_api_key, model_name='Llama3-8b-8192')
 
 prompt = ChatPromptTemplate.from_template(
@@ -44,7 +47,7 @@ def create_vector_embedding():
         st.session_state.vectors = FAISS.from_documents(st.session_state.final_documents, st.session_state.embeddings)
         # st.write("Vector Database is ready")
     else:
-        st.write("Vector Database already exists!")
+        st.write("")
 
 user_prompt = st.text_input("Enter your query for saurabh CV")
 if st.button("Ask"):
