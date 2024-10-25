@@ -37,7 +37,7 @@ def create_vector_embedding():
             st.error("No documents found!")
             return
 
-        st.session_state.text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+        st.session_state.text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
         st.session_state.final_documents = st.session_state.text_splitter.split_documents(st.session_state.docs)
 
         if not st.session_state.final_documents:
